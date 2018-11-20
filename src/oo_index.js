@@ -55,3 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   })
 });
+/////////// Add the task to a new container
+// found the element to append to - THE FORM
+// found the container to put stuff in - THE TASK UL
+// create a listener for the submit click
+// (but first prevent the default post method)
+// grab the input value of the form
+// create an element for the event listener to fill in with that value
+// assign the new element text to the input value
+// append the new element as a child to the TASK UL
+//
+// set a reset method before the closing curly bracket of the eventListener
