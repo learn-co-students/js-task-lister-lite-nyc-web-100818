@@ -1,25 +1,42 @@
-const newTaskDescription = document.querySelector("#new-task-description");
-const createTaskForm = document.querySelector("#create-task-form");
-const theList = document.querySelector("#tasks");
+// TaskLister Lite
 
+document.addEventListener("DOMContentLoaded", function() {
+  // *************DOM Elements*******************
+  const newTaskDescription = document.querySelector("#new-task-description");
+  const newTaskForm = document.querySelector("#create-task-form");
+  const taskUl = document.querySelector("#tasks");
+  // *************Function Invocations****************
+  newTask();
+  // deleteTask();
+  // *****************FUNCTIONS******************
 
-createTaskForm.addEventListener("submit", function (event) {
-  event.preventDefault()
-  const userInput = event.target.querySelector("#new-task-description")
-  // console.log(userInput.value)
-  const newTask = document.createElement("li");
-  const deleteButton = document.createElement("button");
-  console.log(deleteButton)
-  deleteButton.innerText = "🥴";
-  newTask.innerHTML = `${userInput.value}`;
-  newTask.append(deleteButton)
-  theList.appendChild(newTask);
+  function newTask() {
+    newTaskForm.addEventListener("submit", event => {
+      console.log("here!");
+      event.preventDefault();
+      const userInput = newTaskDescription.value;
+      if (userInput === "") {
+        alert("Please describe your task");
+      } else {
+        const newTaskLi = document.createElement("li");
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = `<data-action="delete"> x`;
+        newTaskLi.innerHTML = userInput;
+        newTaskLi.append(deleteButton);
+        taskUl.appendChild(newTaskLi);
+        event.target.reset();
+      }
+    });
+  }
 
-  deleteButton.addEventListener("click", function (event) {
-    console.log(newTask)
-    theList.removeChild(newTask)
-    // newTask[0].remove()
-
-  })
-
+  // function deleteTask() {
+  //   taskUl.addEventListener("click", event => {
+  //     console.log(event.target);
+  //     if (event.target.dataset.action === "delete") {
+  //       taskUl.removeChild();
+  //     }
+  //   });
+  // }
 });
+
+// Helper Functions
